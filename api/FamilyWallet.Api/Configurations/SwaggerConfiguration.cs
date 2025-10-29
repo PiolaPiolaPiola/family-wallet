@@ -34,19 +34,16 @@ namespace Q10.TaskManager.Api.Configurations
             return services;
         }
 
-        public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "FamilyWallet API v1");
-                    options.RoutePrefix = "swagger";
-                    options.DocumentTitle = "FamilyWallet API Documentation";
-                    options.DisplayRequestDuration();
-                });
-            }
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "FamilyWallet API v1");
+                options.RoutePrefix = "swagger";
+                options.DocumentTitle = "FamilyWallet API Documentation";
+                options.DisplayRequestDuration();
+            });
 
             return app;
         }
