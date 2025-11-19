@@ -6,7 +6,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: "http://+:80"
-      CONNECTION_STRING: "Host=postgres;Port=5432;Database=TaskManagerDB;User Id=postgres;Password=postgres_password123"
+      CONNECTION_STRING: "Host=postgres;Port=5432;Database=familywalletDB;User Id=postgres;Password=postgres_password123"
     build:
       context: .
       dockerfile: api.Dockerfile
