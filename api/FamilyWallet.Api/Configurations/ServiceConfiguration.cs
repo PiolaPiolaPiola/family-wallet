@@ -11,6 +11,8 @@ namespace FamilyWallet.Api.Configurations
             #region Services
 
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IFamilyService, FamilyService>();
+            services.AddScoped<IPersonService, PersonService>();
 
             #endregion Services
 

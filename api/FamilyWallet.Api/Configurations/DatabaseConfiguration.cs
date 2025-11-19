@@ -1,15 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FamilyWallet.Infraestructure.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace FamilyWallet.Api.Configurations
 {
     public static class DatabaseConfiguration
     {
-        public static IServiceCollection AddDatabaseConfiguration(this IServiceCollection services)
+        public static IServiceCollection AddDatabaseConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<PostgreSQLContext>(options =>
-                options.UseNpgsql(Environment.GetEnvironmentVariable("CONNECTION_STRING")));
+            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? configuration.GetConnectionString("DefaultConnection");
 
+            services.AddDbContext<PostgreSQLContext>(options =>
+                options.UseNpgsql(connectionString));
 
             return services;
         }

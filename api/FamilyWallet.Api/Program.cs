@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddServices();
 
-builder.Services.AddDatabaseConfiguration();
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
 builder.Services.AddSwaggerConfiguration();
 builder.Services.AddControllers();
@@ -26,7 +26,7 @@ builder.Services.AddAuthConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
-//await builder.Services.DatabaseCreatedAsync();
+await builder.Services.DatabaseCreatedAsync();
 
 if (app.Environment.IsDevelopment())
 {
