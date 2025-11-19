@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using FamilyWallet.Infraestructure.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace FamilyWallet.Infraestructure.Data
         public PostgreSQLContext(DbContextOptions<PostgreSQLContext> options) : base(options)
         {
         }
+
+        public DbSet<User> User { get; set; }
     }
 }
