@@ -22,5 +22,7 @@ namespace FamilyWallet.Infraestructure.Data
         public DbSet<Person> Person { get; set; }
 
         public DbSet<Tope> Topes { get; set; }
+
+        //TODO: Agregar repositorio de notificaciones
     }
 }

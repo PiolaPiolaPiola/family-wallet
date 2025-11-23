@@ -37,22 +37,22 @@ services:
     #   - postgres_data:/var/lib/postgresql/data
     networks:
       - familywallet-network
-  # rabbitmq:
-  #   image: rabbitmq:3-management
-  #   container_name: taskmanager-rabbitmq
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: admin
-  #     RABBITMQ_DEFAULT_PASS: admin123
-  #   ports:
-  #     - "5672:5672"
-  #     - "15672:15672"
-  #   healthcheck:
-  #     test: ["CMD", "rabbitmq-diagnostics", "ping"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-  #   networks:
-  #     - taskmanager-network
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: familywallet-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+       - familywallet-network
 volumes:
   postgres_data:
 networks:

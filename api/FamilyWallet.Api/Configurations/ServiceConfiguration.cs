@@ -1,6 +1,9 @@
-﻿using FamilyWallet.Infraestructure.Repositories;
+﻿using FamilyWallet.Api.Workers;
+using FamilyWallet.Infraestructure.Repositories;
 using FamilyWallet.Infraestructure.Repositories.Interfaces;
+using FamilyWallet.Infraestructure.Repositories.Interfaces.Messages;
 using FamilyWallet.Infraestructure.Services;
+using FamilyWallet.Infraestructure.Services.Messages;
 
 namespace FamilyWallet.Api.Configurations
 {
@@ -15,12 +18,20 @@ namespace FamilyWallet.Api.Configurations
             services.AddScoped<IFamilyService, FamilyService>();
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<ITopeService, TopeService>();
+            services.AddScoped<IEmailService, SendGridEmailService>();
+
+            services.AddScoped<IEmailBulkCommandService, EmailBulkCommandService>();
+
+            // RabbitMQ Services
+            services.AddScoped<IProcessBulkService, ProcessBulkService>();
+            services.AddHostedService<ProcessBulkWorker>();
 
             #endregion Services
 
             #region Repositories
 
             services.AddScoped<ITopeRepository, TopeRepository>();
+            services.AddSingleton<IRabbitMQRepository, RabbitMQRepository>();
 
             #endregion Repositories
 
