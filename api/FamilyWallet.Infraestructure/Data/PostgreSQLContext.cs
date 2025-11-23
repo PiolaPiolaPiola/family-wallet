@@ -20,5 +20,7 @@ namespace FamilyWallet.Infraestructure.Data
         public DbSet<Family> Family { get; set; }
 
         public DbSet<Person> Person { get; set; }
+
+        public DbSet<Tope> Topes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FamilyWallet.Infraestructure.Repositories.Interfaces;
+﻿using FamilyWallet.Infraestructure.Repositories;
+using FamilyWallet.Infraestructure.Repositories.Interfaces;
 using FamilyWallet.Infraestructure.Services;
 
 namespace FamilyWallet.Api.Configurations
@@ -13,8 +14,15 @@ namespace FamilyWallet.Api.Configurations
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IFamilyService, FamilyService>();
             services.AddScoped<IPersonService, PersonService>();
+            services.AddScoped<ITopeService, TopeService>();
 
             #endregion Services
+
+            #region Repositories
+
+            services.AddScoped<ITopeRepository, TopeRepository>();
+
+            #endregion Repositories
 
             return services;
         }
